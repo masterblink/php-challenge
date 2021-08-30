@@ -8,13 +8,15 @@ use App\Contact;
 class ContactService
 {
 	
-	public static function findByName(): Contact
+	public static function findByName($name): Contact
 	{
-		// queries to the db
+		$contact = new Contact($name);
+
+		return $contact;
 	}
 
 	public static function validateNumber(string $number): bool
 	{
-		// logic to validate numbers
+		return preg_match('/^[0-9]{10}+$/', $number);
 	}
 }
